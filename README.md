@@ -1,2 +1,2 @@
 # github
-a place to test github public repository
+A place to test github public repository
