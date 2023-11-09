@@ -1,11 +1,13 @@
 # Trigger when there exist a push to main branch
 name: ci - template
 
-run-name: ${{ github.actor }} pushed to main
+run-name: ${{ github.actor }} pushed to feature
 
 on:
-  push:
-    branches: [ "main" ]
+  pull_request:
+    branches:
+      - 'feature/**'
+      - '!feature/**/**' #ignore sub-features, core feature will trigger the ci, save ci cost
 
   # Allow manual trigger from github
   workflow_dispatch:
@@ -53,7 +55,10 @@ jobs:
         run: |
           npm install
           npm run build
+      - name: Approval
+        run: |
+          echo bypass approval process
       - name: Deploy
         run: |
-          echo running deployment to distributor staging platform
+          echo running deployment to distributor dev platform
 
