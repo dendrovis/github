@@ -7,12 +7,12 @@ on:
   # push:
   #   branches:
   #     - 'feature/*'
-  #     - '!feature/*-**'
+  #     - '!feature/*-**' #ignore sub-features, core feature will trigger the ci, save ci cost
 
-  pull_request:
+  pull_request: # trigger to push into destination branch
     branches:
-      - 'feature/*'
-      - '!feature/*-**' #ignore sub-features, core feature will trigger the ci, save ci cost
+      - 'main'
+      # - '!feature/*-**' #ignore sub-features, core feature will trigger the ci, save ci cost
 
   # Allow manual trigger from github
   workflow_dispatch:
