@@ -3,8 +3,8 @@
 name: CI - portal template
 
 on:
-  push:
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main" ]
 
   workflow_dispatch: # allow manual trigger from github
     # Inputs the workflow accepts.
@@ -17,11 +17,11 @@ on:
         required: true
         # The data type of the input
         type: string
-      # name: 'inputB'
-      #   description: 'input B description'
-      #   default: 'test B'
-      #   required: false
-      #   type: string
+      name: 'inputB'
+        description: 'input B description'
+        default: 'test B'
+        required: false
+        type: string
 
 jobs:
   # job-name
