@@ -1,5 +1,5 @@
 # Trigger when there exist a push to main branch
-name: CI - portal template
+name: ci - portal template
 
 run-name: ${{ github.actor }} pushed
 
