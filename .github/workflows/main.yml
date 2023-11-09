@@ -9,16 +9,16 @@ on:
 
   # Allow manual trigger from github
   workflow_dispatch:
-  #   # Inputs the workflow accepts.
-  #   inputs:
-  #     name: 'inputA'
-  #       description: 'input A description'
-  #       # Default value if no value is explicitly provided
-  #       default: 'test A'
-  #       # Input has to be provided for the workflow to run
-  #       required: true
-  #       # The data type of the input
-  #       type: string
+    # Inputs the workflow accepts.
+    inputs:
+      name: 'inputA'
+        description: 'input A description'
+        # Default value if no value is explicitly provided
+        default: 'test A'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
   #     name: 'inputB'
   #       description: 'input B description'
   #       default: 'test B'
