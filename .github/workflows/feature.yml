@@ -4,6 +4,10 @@ name: ci - feature template
 run-name: ${{ github.actor }} pushed to feature
 
 on:
+  push:
+    branches:
+      - 'feature/**'
+
   pull_request:
     branches:
       - 'feature/**'
