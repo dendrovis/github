@@ -9,7 +9,8 @@ on:
       - 'feature/**'
 
   pull_request:
-    branches: [ "feature/**" ]
+    branches:
+      - 'feature/**'
       #- '!feature/**/**' #ignore sub-features, core feature will trigger the ci, save ci cost
 
   # Allow manual trigger from github
