@@ -3,8 +3,8 @@
 name: CI
 
 on:
-  push:
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main" ]
 
   workflow_dispatch: # allow manual trigger from github
 
