@@ -1,0 +1,28 @@
+# Trigger when there exist a push to main branch
+
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch: # allow manual trigger from github
+
+jobs:
+  # job-name
+  main: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: run test
+        run: | 
+          cd test-app 
+          ls
+          source test.sh
+      # - name: Run a multi-line script
+      #   run: |
+      #     echo Add other actions to build,
+      #     echo test, and deploy your project.
