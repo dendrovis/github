@@ -30,6 +30,10 @@ jobs:
   main: 
     # choice of os
     runs-on: ubuntu-latest 
+    # optional setup your target directory ,  default would be root level
+    defaults:
+      run:
+        working-directory: ./test-app
     steps:
       # packages and dependencies (fill accordingly to your needs)
       - uses: actions/checkout@v4 #https://github.com/actions/checkout
@@ -41,15 +45,9 @@ jobs:
         run: | 
           echo running sanity test
           ls
-      - name: navigate target app
-        run: cd test-app
       - name: build
         run: |
           npm install
           npm build
       - name: test
         run: npm test
-      # - name: Run a multi-line script
-      #   run: |
-      #     echo Add other actions to build,
-      #     echo test, and deploy your project.
