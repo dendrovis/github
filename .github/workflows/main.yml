@@ -1,39 +1,52 @@
 # Trigger when there exist a push to main branch
 
-name: CI
+name: CI - portal template
 
 on:
-  # push:
-  #   branches: [ "main" ]
+  push:
+    branches: [ "main" ]
 
   workflow_dispatch: # allow manual trigger from github
     # Inputs the workflow accepts.
     inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+      name: 'inputA'
+        description: 'input A description'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'test A'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
+        type: string
+      name: 'inputB'
+        description: 'input B description'
+        default: 'test B'
+        required: false
         type: string
 
 jobs:
   # job-name
   main: 
-    runs-on: ubuntu-latest
+    # choice of os
+    runs-on: ubuntu-latest 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # packages and dependencies (fill accordingly to your needs)
+      - uses: actions/checkout@v4 #https://github.com/actions/checkout
+      - uses: actions/setup-node@v4 #https://github.com/actions/setup-node
         with:
           node-version: 18
-      - name: run test
+      # scripts
+      - name: sanity test
         run: | 
-          cd test-app 
+          echo running sanity test
           ls
-          source test.sh
-          node --version
+      - name: navigate target app
+        run: cd test-app
+      - name: build
+        run: |
+          npm install
+          npm build
+      - name: test
+        run: npm test
       # - name: Run a multi-line script
       #   run: |
       #     echo Add other actions to build,
