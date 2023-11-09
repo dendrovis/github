@@ -1,5 +1,4 @@
 # Trigger when there exist a push to main branch
-
 name: CI - portal template
 
 on:
