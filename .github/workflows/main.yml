@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      name: 'inputA'
+      name:
         description: 'input A description'
         # Default value if no value is explicitly provided
         default: 'test A'
@@ -19,11 +19,11 @@ on:
         required: true
         # The data type of the input
         type: string
-  #     name: 'inputB'
-  #       description: 'input B description'
-  #       default: 'test B'
-  #       required: false
-  #       type: string
+      name:
+        description: 'input B description'
+        default: 'test B'
+        required: false
+        type: string
 
 jobs:
   # job-name
