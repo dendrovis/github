@@ -32,9 +32,16 @@ on:
         required: false
         type: string
 
+
+
 jobs:
   # job-name
-  main: 
+  checks:
+    # gate keeper conditions
+    if: ${{ startsWith(github.ref, 'refs/heads/feature') }}
+  run:
+    # depends on other job(s)
+    needs: checks
     # choice of os
     runs-on: ubuntu-latest 
     # optional setup your target directory, default would be root level
