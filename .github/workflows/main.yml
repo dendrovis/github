@@ -36,18 +36,21 @@ jobs:
         working-directory: ./test-app
     steps:
       # packages and dependencies (fill accordingly to your needs)
-      - uses: actions/checkout@v4 #https://github.com/actions/checkout
-      - uses: actions/setup-node@v4 #https://github.com/actions/setup-node
+      - name: Checkout
+        uses: actions/checkout@v4 #https://github.com/actions/checkout
+      - name: Setup Node  
+        uses: actions/setup-node@v4 #https://github.com/actions/setup-node
         with:
           node-version: 18
       # scripts
-      - name: sanity test
+      - name: Sanity Test
         run: | 
           echo running sanity test
           ls
-      - name: build
+      - name: Test
+        run: npm run test
+      - name: Build
         run: |
           npm install
-          npm build
-      - name: test
-        run: npm test
+          npm run build
+
