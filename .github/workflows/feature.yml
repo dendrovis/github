@@ -1,5 +1,5 @@
 # Trigger when there exist a push to main branch
-name: ci - template
+name: ci - feature template
 
 run-name: ${{ github.actor }} pushed to feature
 
