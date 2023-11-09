@@ -39,6 +39,9 @@ jobs:
   checks:
     # gate keeper conditions
     if: ${{ startsWith(github.ref, 'refs/heads/feature') }}
+    steps:
+      - name: Check branch
+        run: echo valid branch
   run:
     # depends on other job(s)
     needs: checks
