@@ -30,7 +30,7 @@ jobs:
   main: 
     # choice of os
     runs-on: ubuntu-latest 
-    # optional setup your target directory ,  default would be root level
+    # optional setup your target directory, default would be root level
     defaults:
       run:
         working-directory: ./test-app
