@@ -43,9 +43,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4 #https://github.com/actions/checkout
       - name: Check Branch Name
+        # context https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
         run: |
-          echo checking branch ${github.ref}
-          source checks.sh ${github.ref}
+          echo checking branch ${github.head_ref}
+          source checks.sh ${github.head_ref}
   run:
     # depends on other job(s)
     needs: checks
