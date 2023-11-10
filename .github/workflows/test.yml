@@ -38,4 +38,4 @@ jobs:
         env: # Or as an environment variable
           SUPER_SECRETS: ${{ secrets.SuperSecret }}
         run: |
-          echo "$SUPER_SECRETS"
+          echo ${SUPER_SECRETS}
