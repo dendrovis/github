@@ -1,13 +1,18 @@
 # Trigger when there exist a push to main branch
-name: ci - template
+name: ci - feature template
 
 run-name: ${{ github.actor }} pushed to feature
 
 on:
-  pull_request:
+  # push:
+  #   branches:
+  #     - 'feature/*'
+  #     - '!feature/*-**' #ignore sub-features, core feature will trigger the ci, save ci cost
+
+  pull_request: # trigger to push into destination branch
     branches:
-      - 'feature/**'
-      - '!feature/**/**' #ignore sub-features, core feature will trigger the ci, save ci cost
+      - 'main'
+      # - '!feature/*-**' #ignore sub-features, core feature will trigger the ci, save ci cost
 
   # Allow manual trigger from github
   workflow_dispatch:
@@ -27,9 +32,26 @@ on:
         required: false
         type: string
 
+
+
 jobs:
   # job-name
-  main: 
+  checks:
+    runs-on: ubuntu-latest 
+    # gate keeper conditions
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4 #https://github.com/actions/checkout
+      - name: Check Branch Name
+        # context https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
+        env:
+          BRANCH_REF: ${{ github.head_ref }}
+        run: |
+          echo checking branch ${BRANCH_REF}
+          source checks.sh ${BRANCH_REF}
+  run:
+    # depends on other job(s)
+    needs: checks
     # choice of os
     runs-on: ubuntu-latest 
     # optional setup your target directory, default would be root level
@@ -38,7 +60,7 @@ jobs:
         working-directory: ./test-app
     steps:
       # packages and dependencies (fill accordingly to your needs)
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4 #https://github.com/actions/checkout
       - name: Setup Node  
         uses: actions/setup-node@v4 #https://github.com/actions/setup-node
