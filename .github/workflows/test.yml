@@ -36,6 +36,6 @@ jobs:
           echo test, and deploy your project.
       - name: Run Secrets
         env: # Or as an environment variable
-          SUPER_SECRETS: ${{ secrets.SuperSecret }}
+          SUPER_SECRETS: ${{ secrets.TEST_SECRET }}
         run: |
           echo ${SUPER_SECRETS}
