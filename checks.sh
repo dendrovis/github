@@ -8,5 +8,6 @@ if [[ "${BRANCH_NAME}" =~ ^feature\/[^-\/]+$ ]]; then
 echo "Branch name matches the pattern 'feature/' without additional subdirectories."
 else
 echo "Branch name does not match the pattern 'feature/' or has additional subdirectories."
-exit 1  # exit with a non-zero status to fail the workflow
+# exit with a non-zero status to fail the workflow
+exit 1  
 fi
