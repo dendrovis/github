@@ -44,7 +44,7 @@ jobs:
         uses: actions/checkout@v4 #https://github.com/actions/checkout
       - name: Check Branch Name
         run: |
-          echo GITHUB_REF
+          echo checking branch ${GITHUB_REF}
           source checks.sh GITHUB_REF
   run:
     # depends on other job(s)
