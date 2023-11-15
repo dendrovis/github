@@ -29,9 +29,12 @@ jobs:
         TOKEN: ${{ secrets.TOKEN }}
         APP_ID: ${{ secrets.APP_ID }}
         TESTERS: ${{ secrets.TEST_TESTER }}
+      # Temporary disabled
       run: |
         echo "Running deployment..."
         npm install -g firebase-tools
+        echo "bypass firebase cli"
+        exit 0
         firebase appdistribution:distribute test-ci.apk \
           --app ${APP_ID} \
           --token ${TOKEN} \
