@@ -1,13 +1,10 @@
 To build apk without Expo EAS CLI, this allow local or CI without Expo online services dependency
 
 
-# To generate all the Android and IOS files
+
 npx expo prebuild
 
-# Make sure to connect your device or to run your Emulator
-npx react-native run-android --mode="release"
+npx expo run:android 
 
-# If you want to sign the APK and publish to Google Play Store.
-npx react-native build-android --mode=release
+At android directory - run ./gradlew assemble<\Output Mode\>
 
-https://github.com/expo/eas-cli/issues/1300
