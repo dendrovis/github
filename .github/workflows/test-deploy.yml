@@ -45,8 +45,6 @@ jobs:
     - name: Build APK
       run: |
         echo "Building APK..."
-        ls
         cd ./test-mobile-app/android
-        echo "android space"
-        ls
+        ./gradlew build
         ./gradlew assembleDebug
