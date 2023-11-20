@@ -23,6 +23,8 @@ jobs:
       uses: actions/setup-node@v4 #https://github.com/actions/setup-node
       with:
         node-version: 18
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
     # Runs a single command using the runners shell
     - name: Run deployment
       env:
@@ -45,4 +47,6 @@ jobs:
         echo "Building APK..."
         ls
         cd ./test-mobile-app/android
+        echo "android space"
+        ls
         ./gradlew assembleDebug
