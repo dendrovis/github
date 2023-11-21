@@ -28,12 +28,10 @@ jobs:
         node-version: 18
     - name: Setup Expo
       uses: expo/expo-github-action@v8
-      env:
-        TOKEN: ${{ secrets.TOKEN_EXPO }}
       with:
         expo-version: latest
         eas-version: latest
-        token: ${{TOKEN}}
+        token: ${{secrets.TOKEN_EXPO}}
     - name: Setup EAS local builds
       run: npm i -g eas-cli-local-build-plugin
     # Installation
