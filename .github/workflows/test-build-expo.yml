@@ -65,19 +65,17 @@ jobs:
       run: |
         eas build --local \
           --non-interactive \
-          --output=./out \
+          --output=./app-build \
           --platform=android \
           --profile=development
     # Upload the app binaries to the artifact section of the workflow
     # They can optionally be downloaded by the user later on or for example added to a release
     - name: Check artifact
       run: |
-        ls
-        cd ./out
-        ls
+        ls -l
     - name: Upload binary
       uses: actions/upload-artifact@v3
       with:
         name: test-mobile-app
-        path: out
+        path: app-build
         if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
