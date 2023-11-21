@@ -29,6 +29,8 @@ jobs:
       uses: actions/setup-node@v4 #https://github.com/actions/setup-node
       with:
         node-version: 18
+    - name: Temporary Disabled
+      run: exit 0
     - name: Setup Expo
       uses: expo/expo-github-action@v8
       with:
@@ -37,22 +39,22 @@ jobs:
         token: ${{secrets.TOKEN_EXPO}}
     # Installation
     # Trying to install dependecies from cache
-    - name: Cache node modules
-      id: cache-npm
-      uses: actions/cache@v3
-      env:
-        cache-name: cache-node-modules
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
-    - if: ${{ steps.cache-npm.outputs.cache-hit == 'false' }}
-      name: List the state of node modules
-      continue-on-error: true
-      run: npm list
+    # - name: Cache node modules
+    #   id: cache-npm
+    #   uses: actions/cache@v3
+    #   env:
+    #     cache-name: cache-node-modules
+    #   with:
+    #     path: ~/.npm
+    #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-build-${{ env.cache-name }}-
+    #       ${{ runner.os }}-build-
+    #       ${{ runner.os }}-
+    # - if: ${{ steps.cache-npm.outputs.cache-hit == 'false' }}
+    #   name: List the state of node modules
+    #   continue-on-error: true
+    #   run: npm list
     - name: Install dependencies
       run: npm install
     - name: Setup EAS local builds
@@ -67,7 +69,7 @@ jobs:
           --non-interactive \
           --output=./app-build.apk \
           --platform=android \
-          --profile=development
+          --profile=preview
     # Upload the app binaries to the artifact section of the workflow
     # They can optionally be downloaded by the user later on or for example added to a release
     - name: Check artifact
