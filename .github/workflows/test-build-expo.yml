@@ -33,7 +33,7 @@ jobs:
       with:
         expo-version: latest
         eas-version: latest
-        token: ${TOKEN}
+        token: ${{TOKEN}}
     - name: Setup EAS local builds
       run: npm i -g eas-cli-local-build-plugin
     # Installation
@@ -53,7 +53,7 @@ jobs:
     # Upload the app binaries to the artifact section of the workflow
     # They can optionally be downloaded by the user later on or for example added to a release
     - name: Upload binary
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: test-mobile-app-android
         path: out
