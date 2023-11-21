@@ -42,9 +42,3 @@ jobs:
           --token ${TOKEN} \
           --release-notes "test release notes" \
           --testers ${TESTERS}
-    - name: Build APK
-      run: |
-        echo "Building APK..."
-        cd ./test-mobile-app/android
-        ./gradlew build
-        ./gradlew assembleDebug
