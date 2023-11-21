@@ -30,7 +30,7 @@ jobs:
       with:
         node-version: 18
     - name: Temporary Disabled
-      run: exit 0
+      run: exit 1 # force workflow to fail
     - name: Setup Expo
       uses: expo/expo-github-action@v8
       with:
